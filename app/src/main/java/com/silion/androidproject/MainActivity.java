@@ -1,16 +1,21 @@
 package com.silion.androidproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.silion.androidproject.zxing.ZXingActivity;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ListView mListView;
     private ListAdapter mListAdapter;
@@ -22,18 +27,25 @@ public class MainActivity extends AppCompatActivity {
         mListView = (ListView) findViewById(R.id.listView);
         mListAdapter = new ListAdapter(this, null);
         mListView.setAdapter(mListAdapter);
+        mListView.setOnItemClickListener(this);
         initData();
     }
 
     private void initData() {
-        List<String> datas = new ArrayList<>();
-        datas.add("二维码扫描工具-ZXing");
+        List<Demo> datas = new ArrayList<>();
+        datas.add(new Demo("二维码扫描工具-ZXing", ZXingActivity.class));
         mListAdapter.addAll(datas);
     }
 
-    protected class ListAdapter extends SimpleBaseAdapter<String> {
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(this, mListAdapter.getItem(position).mClass);
+        startActivity(intent);
+    }
 
-        public ListAdapter(Context context, List<String> datas) {
+    protected class ListAdapter extends SimpleBaseAdapter<Demo> {
+
+        public ListAdapter(Context context, List<Demo> datas) {
             super(context, datas);
         }
 
@@ -45,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getItemView(int position, View convertView, ViewHolder holder) {
             TextView textView = holder.getView(R.id.tvTile);
-            textView.setText(getItem(position));
+            textView.setText(getItem(position).mName);
             return convertView;
         }
     }
