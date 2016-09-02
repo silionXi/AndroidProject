@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".zxing.ZXingActivity">
         </activity>
+        <activity android:name=".layoutinflater.LayoutInflaterActivity">
+        </activity>
     </application>
 
 </manifest>

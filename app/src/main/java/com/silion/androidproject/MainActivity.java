@@ -9,11 +9,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.silion.androidproject.layoutinflater.LayoutInflaterActivity;
 import com.silion.androidproject.zxing.ZXingActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private void initData() {
         List<Demo> datas = new ArrayList<>();
         datas.add(new Demo("二维码扫描工具-ZXing", ZXingActivity.class));
+        datas.add(new Demo("LayoutInflater的参数", LayoutInflaterActivity.class));
         mListAdapter.addAll(datas);
     }
 
