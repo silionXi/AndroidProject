@@ -24,4 +24,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile project(':libzxing')
+    compile files('libs/jackson/jackson-annotations-2.8.0.jar')
+    compile files('libs/jackson/jackson-core-2.8.1.jar')
+    compile files('libs/jackson/jackson-databind-2.8.1.jar')
 }

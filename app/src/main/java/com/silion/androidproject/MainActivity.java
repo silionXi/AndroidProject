@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.silion.androidproject.jackson.JacksonActivity;
 import com.silion.androidproject.layoutinflater.LayoutInflaterActivity;
 import com.silion.androidproject.zxing.ZXingActivity;
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         List<Demo> datas = new ArrayList<>();
         datas.add(new Demo("二维码扫描工具-ZXing", ZXingActivity.class));
         datas.add(new Demo("LayoutInflater的参数", LayoutInflaterActivity.class));
+        datas.add(new Demo("Jackson的使用", JacksonActivity.class));
         mListAdapter.addAll(datas);
     }
 
