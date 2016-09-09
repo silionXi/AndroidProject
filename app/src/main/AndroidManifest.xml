@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".jackson.JacksonActivity">
         </activity>
+        <activity android:name=".serializable.SerializeActivity">
+        </activity>
     </application>
 
 </manifest>
