@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.silion.androidproject.jackson.JacksonActivity;
 import com.silion.androidproject.layoutinflater.LayoutInflaterActivity;
+import com.silion.androidproject.progressdialog.ProgressDialogActivity;
 import com.silion.androidproject.serializable.SerializeActivity;
 import com.silion.androidproject.zxing.ZXingActivity;
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         datas.add(new Demo("LayoutInflater的参数", LayoutInflaterActivity.class));
         datas.add(new Demo("Jackson的使用", JacksonActivity.class));
         datas.add(new Demo("对象序列化", SerializeActivity.class));
+        datas.add(new Demo("ProgressDialog使用总结", ProgressDialogActivity.class));
         mListAdapter.addAll(datas);
     }
 

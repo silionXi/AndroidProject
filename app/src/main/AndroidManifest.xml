@@ -23,6 +23,8 @@
         </activity>
         <activity android:name=".serializable.SerializeActivity">
         </activity>
+        <activity android:name=".progressdialog.ProgressDialogActivity">
+        </activity>
     </application>
 
 </manifest>
