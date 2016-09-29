@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.silion.androidproject"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -27,4 +27,6 @@ dependencies {
     compile files('libs/jackson/jackson-annotations-2.8.0.jar')
     compile files('libs/jackson/jackson-core-2.8.1.jar')
     compile files('libs/jackson/jackson-databind-2.8.1.jar')
+    compile files('libs/volley.jar')
+    compile project(':slibrary')
 }
