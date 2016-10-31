@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.silion.androidproject.jackson.JacksonActivity;
 import com.silion.androidproject.layoutinflater.LayoutInflaterActivity;
+import com.silion.androidproject.permission.PermissionActivity;
 import com.silion.androidproject.progressdialog.ProgressDialogActivity;
 import com.silion.androidproject.serializable.SerializeActivity;
 import com.silion.androidproject.tablayout.TablayoutActivity;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         datas.add(new Demo("ProgressDialog使用总结", ProgressDialogActivity.class));
         datas.add(new Demo("自定义Scroller的ViewPager", ViewPagerActivity.class));
         datas.add(new Demo("Design库-TabLayout", TablayoutActivity.class));
+        datas.add(new Demo("Android 6.0运行时权限详解", PermissionActivity.class));
         mListAdapter.addAll(datas);
     }
 
