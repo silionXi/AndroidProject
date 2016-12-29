@@ -22,7 +22,7 @@ import com.silion.androidproject.zxing.ZXingActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
     private ListView mListView;
     private ListAdapter mListAdapter;

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.silion.androidproject.BaseActivity;
 import com.silion.androidproject.R;
 
 import java.io.IOException;
@@ -18,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class JacksonActivity extends AppCompatActivity {
+public class JacksonActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -13,9 +13,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.silion.androidproject.BaseActivity;
 import com.silion.androidproject.R;
 
-public class PermissionActivity extends AppCompatActivity implements View.OnClickListener {
+public class PermissionActivity extends BaseActivity implements View.OnClickListener {
     private final int CALENDAR_REQUEST_CODE = 0;
     private final int CAMERA_REQUEST_CODE = 1;
     private final int CONTACTS_REQUEST_CODE = 2;

@@ -7,12 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.silion.androidproject.BaseActivity;
 import com.silion.androidproject.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewActivity extends AppCompatActivity {
+public class RecyclerViewActivity extends BaseActivity {
     private RecyclerView mRecyclerView;
     private List<Christmas> mChristmasList = new ArrayList<>();
     private ChristmasAdapter mChristmasAdapter;

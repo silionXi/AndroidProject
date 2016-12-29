@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.silion.androidproject.BaseActivity;
 import com.silion.androidproject.R;
 
 import java.io.File;
@@ -18,7 +19,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SerializeActivity extends AppCompatActivity implements View.OnClickListener {
+public class SerializeActivity extends BaseActivity implements View.OnClickListener {
     private User[] mUsers;
     private User mAppendUser;
 

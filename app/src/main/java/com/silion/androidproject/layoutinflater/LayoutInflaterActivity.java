@@ -6,9 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.silion.androidproject.BaseActivity;
 import com.silion.androidproject.R;
 
-public class LayoutInflaterActivity extends AppCompatActivity implements View.OnClickListener {
+public class LayoutInflaterActivity extends BaseActivity implements View.OnClickListener {
     private LinearLayout mllContainer;
     private LinearLayout mllAdd;
     private View mInflaterView;

@@ -15,9 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.samsung.slibrary.utils.DimensionUtils;
+import com.silion.androidproject.BaseActivity;
 import com.silion.androidproject.R;
 
-public class TablayoutActivity extends AppCompatActivity {
+public class TablayoutActivity extends BaseActivity {
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;

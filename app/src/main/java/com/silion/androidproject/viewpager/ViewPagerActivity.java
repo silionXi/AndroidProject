@@ -17,13 +17,14 @@ import android.widget.ImageView;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.silion.androidproject.BaseActivity;
 import com.silion.androidproject.R;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewPagerActivity extends AppCompatActivity {
+public class ViewPagerActivity extends BaseActivity {
 
     private ViewPager mViewPager;
     private PagerAdapter mPagerAdapter = new PagerAdapter() {

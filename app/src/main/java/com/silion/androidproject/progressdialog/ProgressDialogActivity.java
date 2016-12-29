@@ -9,9 +9,10 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.silion.androidproject.BaseActivity;
 import com.silion.androidproject.R;
 
-public class ProgressDialogActivity extends AppCompatActivity {
+public class ProgressDialogActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
