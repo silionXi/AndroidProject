@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "24.0.1"
+    compileSdkVersion 25
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "com.silion.androidproject"
@@ -17,19 +17,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
     compile project(':libzxing')
+    compile files('libs/volley.jar')
+    compile project(':slibrary')
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:design:25.0.1'
+    compile 'com.android.support:support-v13:25.0.1'
+    compile 'com.android.support:support-v4:25.0.1'
     compile files('libs/jackson/jackson-annotations-2.8.0.jar')
     compile files('libs/jackson/jackson-core-2.8.1.jar')
     compile files('libs/jackson/jackson-databind-2.8.1.jar')
-    compile files('libs/volley.jar')
-    compile project(':slibrary')
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:design:23.3.0'
-    compile 'com.android.support:support-v13:23.3.0'
-    compile 'com.android.support:support-v4:23.3.0'
+    compile 'com.android.support:recyclerview-v7:25.0.1'
 }

@@ -42,6 +42,8 @@
         </activity>
         <activity android:name=".permission.PermissionActivity">
         </activity>
+        <activity android:name=".recycleview.RecycleViewActivity">
+        </activity>
     </application>
 
 </manifest>
