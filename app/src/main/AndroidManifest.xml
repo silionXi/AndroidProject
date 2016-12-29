@@ -42,7 +42,7 @@
         </activity>
         <activity android:name=".permission.PermissionActivity">
         </activity>
-        <activity android:name=".recycleview.RecycleViewActivity">
+        <activity android:name=".recycleview.RecyclerViewActivity">
         </activity>
     </application>
 
