@@ -15,16 +15,16 @@ import java.util.List;
  * Created by LiangShilong on 2016/12/29.
  */
 
-public class ChristmasAdapter extends RecyclerView.Adapter<ChristmasAdapter.ViewHolder> {
+public class ChristmasVerticalAdapter extends RecyclerView.Adapter<ChristmasVerticalAdapter.ViewHolder> {
     List<Christmas> mChristmasList;
 
-    public ChristmasAdapter(List<Christmas> christmasList) {
+    public ChristmasVerticalAdapter(List<Christmas> christmasList) {
         mChristmasList = christmasList;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_christmas, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_christmas_vertical, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }

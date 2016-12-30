@@ -1,9 +1,8 @@
 package com.silion.androidproject.recycleview;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,21 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewActivity extends BaseActivity {
-    private RecyclerView mRecyclerView;
     private List<Christmas> mChristmasList = new ArrayList<>();
-    private ChristmasAdapter mChristmasAdapter;
+    private FragmentManager mFragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
-
         loadChristmas();
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mChristmasAdapter = new ChristmasAdapter(mChristmasList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setAdapter(mChristmasAdapter);
+        mFragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container, new RecyclerVerticalFragment(), RecyclerVerticalFragment.class.getSimpleName());
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -41,8 +37,18 @@ public class RecyclerViewActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.vertical:
+                if (!(mFragmentManager.findFragmentById(R.id.container) instanceof RecyclerVerticalFragment)) {
+                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.container, new RecyclerVerticalFragment(), RecyclerVerticalFragment.class.getSimpleName());
+                    fragmentTransaction.commit();
+                }
                 break;
             case R.id.horizontal:
+                if (!(mFragmentManager.findFragmentById(R.id.container) instanceof RecyclerHorizontalFragment)) {
+                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.container, new RecyclerHorizontalFragment(), RecyclerHorizontalFragment.class.getSimpleName());
+                    fragmentTransaction.commit();
+                }
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -77,5 +83,9 @@ public class RecyclerViewActivity extends BaseActivity {
             Christmas stack = new Christmas("烟囱", R.drawable.christmas_stack);
             mChristmasList.add(stack);
         }
+    }
+
+    protected List<Christmas> getChristmas() {
+        return mChristmasList;
     }
 }
