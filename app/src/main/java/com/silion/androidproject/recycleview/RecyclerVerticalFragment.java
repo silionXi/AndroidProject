@@ -1,8 +1,8 @@
 package com.silion.androidproject.recycleview;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.*;
+import android.support.v7.widget.DividerItemDecoration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +26,7 @@ public class RecyclerVerticalFragment extends BaseFragment {
         mChristmasAdapter = new ChristmasVerticalAdapter(((RecyclerViewActivity) getActivity()).getChristmas());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mContext);
         mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, LinearLayoutManager.VERTICAL));
         mRecyclerView.setAdapter(mChristmasAdapter);
         return rootView;
     }
