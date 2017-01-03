@@ -26,7 +26,9 @@ public class RecyclerVerticalFragment extends BaseFragment {
         mChristmasAdapter = new ChristmasVerticalAdapter(((RecyclerViewActivity) getActivity()).getChristmas());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(mContext);
         mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, LinearLayoutManager.VERTICAL));
+        DividerItemDecoration decoration = new DividerItemDecoration(mContext, LinearLayoutManager.VERTICAL);
+        decoration.setDrawable(mContext.getDrawable(R.drawable.recycler_view_divider));
+        mRecyclerView.addItemDecoration(decoration);
         mRecyclerView.setAdapter(mChristmasAdapter);
         return rootView;
     }
