@@ -50,6 +50,13 @@ public class RecyclerViewActivity extends BaseActivity {
                     fragmentTransaction.commit();
                 }
                 break;
+            case R.id.staggeredGrid:
+                if (!(mFragmentManager.findFragmentById(R.id.container) instanceof  RecyclerStaggeredGridFragment)) {
+                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.container, new RecyclerStaggeredGridFragment(), RecyclerStaggeredGridFragment.class.getSimpleName());
+                    fragmentTransaction.commit();
+                }
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }

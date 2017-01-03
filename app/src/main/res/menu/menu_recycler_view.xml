@@ -8,4 +8,8 @@
     <item
         android:id="@+id/horizontal"
         android:title="横向"/>
+
+    <item
+        android:id="@+id/staggeredGrid"
+        android:title="瀑布流"/>
 </menu>
