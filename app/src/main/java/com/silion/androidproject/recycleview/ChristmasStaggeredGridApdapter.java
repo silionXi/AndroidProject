@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.silion.androidproject.R;
 
@@ -29,7 +30,23 @@ public class ChristmasStaggeredGridApdapter extends RecyclerView.Adapter<Christm
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_christmas_staggered_grid, parent, false);
         StaggeredGridLayoutManager.LayoutParams params = (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
         params.height = getRandomHeight();
-        ChristmasStaggeredGridApdapter.ViewHolder viewHolder = new ChristmasStaggeredGridApdapter.ViewHolder(view);
+        final ChristmasStaggeredGridApdapter.ViewHolder viewHolder = new ChristmasStaggeredGridApdapter.ViewHolder(view);
+        viewHolder.mItemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = viewHolder.getAdapterPosition();
+                Christmas christmas = mChristmasList.get(position);
+                Toast.makeText(view.getContext(), "点击了" + christmas.getName() + "Item", Toast.LENGTH_SHORT).show();
+            }
+        });
+        viewHolder.mIconImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = viewHolder.getAdapterPosition();
+                Christmas christmas = mChristmasList.get(position);
+                Toast.makeText(view.getContext(), "点击了" + christmas.getName() + "Iamge", Toast.LENGTH_SHORT).show();
+            }
+        });
         return viewHolder;
     }
 
@@ -46,11 +63,13 @@ public class ChristmasStaggeredGridApdapter extends RecyclerView.Adapter<Christm
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+        public View mItemView;
         public ImageView mIconImageView;
         public TextView mTitleTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            mItemView = itemView;
             mIconImageView = (ImageView) itemView.findViewById(R.id.iconImageView);
             mTitleTextView = (TextView) itemView.findViewById(R.id.titleTextView);
         }
