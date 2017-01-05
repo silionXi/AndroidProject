@@ -17,15 +17,20 @@ import java.util.List;
 
 public class ChristmasVerticalAdapter extends RecyclerView.Adapter<ChristmasVerticalAdapter.ViewHolder> {
     List<Christmas> mChristmasList;
+    private int createNum;
+    private int bindNum;
 
     public ChristmasVerticalAdapter(List<Christmas> christmasList) {
         mChristmasList = christmasList;
+        createNum = 0;
+        bindNum = 0;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_christmas_vertical, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
+        android.util.Log.d("silion", "onCreateViewHolder" + createNum++);
         return viewHolder;
     }
 
@@ -34,6 +39,7 @@ public class ChristmasVerticalAdapter extends RecyclerView.Adapter<ChristmasVert
         Christmas christmas = mChristmasList.get(position);
         holder.mIconImageView.setImageResource(christmas.getImageId());
         holder.mTitleTextView.setText(christmas.getName());
+        android.util.Log.d("silion", "onBindViewHolder" + bindNum++);
     }
 
     @Override

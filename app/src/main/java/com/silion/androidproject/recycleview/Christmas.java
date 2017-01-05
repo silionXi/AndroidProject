@@ -8,6 +8,9 @@ public class Christmas {
     private String mName;
     private int mImageId;
 
+    public Christmas() {
+    }
+
     public Christmas(String name, int imageId) {
         mName = name;
         mImageId = imageId;

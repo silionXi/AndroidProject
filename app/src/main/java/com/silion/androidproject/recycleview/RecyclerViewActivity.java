@@ -64,7 +64,7 @@ public class RecyclerViewActivity extends BaseActivity {
     }
 
     protected void loadChristmas() {
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             Christmas cup = new Christmas("杯子", R.drawable.christmas_cup);
             mChristmasList.add(cup);
             Christmas elk = new Christmas("麋鹿", R.drawable.christmas_elk);
