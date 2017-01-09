@@ -40,6 +40,7 @@ public class RecyclerViewActivity extends BaseActivity {
                 if (!(mFragmentManager.findFragmentById(R.id.container) instanceof RecyclerVerticalFragment)) {
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.container, new RecyclerVerticalFragment(), RecyclerVerticalFragment.class.getSimpleName());
+                    fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
                 }
                 break;
@@ -47,6 +48,7 @@ public class RecyclerViewActivity extends BaseActivity {
                 if (!(mFragmentManager.findFragmentById(R.id.container) instanceof RecyclerHorizontalFragment)) {
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.container, new RecyclerHorizontalFragment(), RecyclerHorizontalFragment.class.getSimpleName());
+                    fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
                 }
                 break;
@@ -54,6 +56,7 @@ public class RecyclerViewActivity extends BaseActivity {
                 if (!(mFragmentManager.findFragmentById(R.id.container) instanceof  RecyclerStaggeredGridFragment)) {
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.container, new RecyclerStaggeredGridFragment(), RecyclerStaggeredGridFragment.class.getSimpleName());
+                    fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
                 }
                 break;
