@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.silion.androidproject.jackson.JacksonActivity;
 import com.silion.androidproject.layoutinflater.LayoutInflaterActivity;
+import com.silion.androidproject.notification.NotificationActivity;
 import com.silion.androidproject.permission.PermissionActivity;
 import com.silion.androidproject.progressdialog.ProgressDialogActivity;
 import com.silion.androidproject.recycleview.RecyclerViewActivity;
@@ -48,6 +49,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         datas.add(new Demo("Design库-TabLayout", TablayoutActivity.class));
         datas.add(new Demo("Android 6.0运行时权限详解", PermissionActivity.class));
         datas.add(new Demo("RecycleView", RecyclerViewActivity.class));
+        datas.add(new Demo("通知", NotificationActivity.class));
         mListAdapter.addAll(datas);
     }
 
