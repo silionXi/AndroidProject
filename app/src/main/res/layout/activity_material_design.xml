@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_material_design"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.silion.androidproject.materialdesign.MaterialDesignActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/Platform.AppCompat.Light"
-        android:layout_height="?attr/actionBarSize"/>
-</FrameLayout>
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/Platform.AppCompat.Light"/>
+    </FrameLayout>
+
+    <TextView
+        tools:context="com.silion.androidproject.materialdesign.MaterialDesignActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#fff"
+        android:text="This is menu"/>
+</android.support.v4.widget.DrawerLayout>
