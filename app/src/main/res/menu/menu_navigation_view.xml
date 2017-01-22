@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuCall"
+        android:icon="@android:drawable/ic_menu_call"
+        android:title="Call"/>
+
+    <item
+        android:id="@+id/menuFriends"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Friends"/>
+
+    <item
+        android:id="@+id/menuLocation"
+        android:icon="@android:drawable/ic_menu_mylocation"
+        android:title="Location"/>
+
+    <item
+        android:id="@+id/menuMail"
+        android:icon="@android:drawable/ic_menu_compass"
+        android:title="Mail"/>
+
+    <item
+        android:id="@+id/menuTask"
+        android:icon="@android:drawable/ic_menu_view"
+        android:title="Task"/>
+</menu>
