@@ -54,6 +54,12 @@
             android:enabled="true"
             android:exported="true">
         </service>
+
+        <activity
+            android:name=".materialdesign.MaterialDesignActivity"
+            android:label="MaterialDesign"
+            android:theme="@style/AppThemeNoActionBar">
+        </activity>
     </application>
 
 </manifest>
