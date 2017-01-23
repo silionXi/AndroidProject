@@ -60,6 +60,10 @@
             android:label="MaterialDesign"
             android:theme="@style/AppThemeNoActionBar">
         </activity>
+        <activity android:name=".materialdesign.PersonActivity"
+                  android:label="Person"
+                  android:theme="@style/AppThemeNoActionBar">
+        </activity>
     </application>
 
 </manifest>

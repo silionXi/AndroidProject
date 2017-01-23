@@ -1,6 +1,7 @@
 package com.silion.androidproject.materialdesign;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -164,7 +166,18 @@ public class MaterialDesignActivity extends BaseActivity {
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             mContext = parent.getContext();
             View view = LayoutInflater.from(mContext).inflate(R.layout.listitem_person, parent, false);
-            ViewHolder viewHolder = new ViewHolder(view);
+            final ViewHolder viewHolder = new ViewHolder(view);
+            viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = viewHolder.getAdapterPosition();
+                    Person person = mPersonList.get(position);
+                    Intent intent = new Intent(mContext, PersonActivity.class);
+                    intent.putExtra("name", person.getName());
+                    intent.putExtra("image_id", person.getImageId());
+                    mContext.startActivity(intent);
+                }
+            });
             return viewHolder;
         }
 
@@ -181,11 +194,13 @@ public class MaterialDesignActivity extends BaseActivity {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
+            CardView cardView;
             TextView tvName;
             ImageView ivImage;
 
             public ViewHolder(View itemView) {
                 super(itemView);
+                cardView = (CardView) itemView;
                 tvName = (TextView) itemView.findViewById(R.id.tvName);
                 ivImage = (ImageView) itemView.findViewById(R.id.ivImage);
             }
