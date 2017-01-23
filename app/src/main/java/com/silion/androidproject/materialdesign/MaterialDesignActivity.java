@@ -1,5 +1,6 @@
 package com.silion.androidproject.materialdesign;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -20,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.silion.androidproject.BaseActivity;
 import com.silion.androidproject.R;
 
@@ -121,9 +123,12 @@ public class MaterialDesignActivity extends BaseActivity {
     }
 
     class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder> {
+        private Context mContext;
+
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_person, parent, false);
+            mContext = parent.getContext();
+            View view = LayoutInflater.from(mContext).inflate(R.layout.listitem_person, parent, false);
             ViewHolder viewHolder = new ViewHolder(view);
             return viewHolder;
         }
@@ -131,7 +136,7 @@ public class MaterialDesignActivity extends BaseActivity {
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
             Person person = mPersonList.get(position);
-            holder.ivImage.setImageResource(person.getImageId());
+            Glide.with(mContext).load(person.getImageId()).into(holder.ivImage);
             holder.tvName.setText(person.getName());
         }
 
