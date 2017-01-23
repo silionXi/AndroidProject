@@ -2,12 +2,14 @@ package com.silion.androidproject.materialdesign;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,6 +33,8 @@ import java.util.List;
 public class MaterialDesignActivity extends BaseActivity {
     private DrawerLayout mDrawerLayout;
     private List<Person> mPersonList = new ArrayList<>();
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+    private PersonAdapter mPersonAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,13 +73,44 @@ public class MaterialDesignActivity extends BaseActivity {
         });
         initPerson();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        PersonAdapter adapter = new PersonAdapter();
+        mPersonAdapter = new PersonAdapter();
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(mPersonAdapter);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refresh();
+            }
+        });
+    }
+
+    private void refresh() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        initPerson();
+                        mPersonAdapter.notifyDataSetChanged();
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    }
+                });
+            }
+        }).start();
     }
 
     private void initPerson() {
+        mPersonList.clear();
         for (int i = 0; i < 2; i++) {
             mPersonList.add(new Person("Girl", R.drawable.girl01));
             mPersonList.add(new Person("Girl", R.drawable.girl02));
