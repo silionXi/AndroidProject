@@ -19,8 +19,9 @@ public class PersonActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person);
         Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
-        int imageId = intent.getIntExtra("image_id", R.drawable.girl01);
+        Person person = (Person) intent.getSerializableExtra("person");
+        String name = person.getName();
+        int imageId = person.getImageId();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         CollapsingToolbarLayout cToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.cToolbarLayout);
         ImageView ivPersonImage = (ImageView) findViewById(R.id.ivPersonImage);

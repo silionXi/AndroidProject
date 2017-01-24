@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.silion.androidproject.alarm.AlarmActivity;
 import com.silion.androidproject.jackson.JacksonActivity;
 import com.silion.androidproject.layoutinflater.LayoutInflaterActivity;
 import com.silion.androidproject.materialdesign.MaterialDesignActivity;
@@ -52,6 +53,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         datas.add(new Demo("RecycleView", RecyclerViewActivity.class));
         datas.add(new Demo("通知", NotificationActivity.class));
         datas.add(new Demo("MaterialDesign", MaterialDesignActivity.class));
+        datas.add(new Demo("定时任务", AlarmActivity.class));
         mListAdapter.addAll(datas);
     }
 

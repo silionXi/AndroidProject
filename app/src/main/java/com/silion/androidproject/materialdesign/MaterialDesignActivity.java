@@ -173,8 +173,7 @@ public class MaterialDesignActivity extends BaseActivity {
                     int position = viewHolder.getAdapterPosition();
                     Person person = mPersonList.get(position);
                     Intent intent = new Intent(mContext, PersonActivity.class);
-                    intent.putExtra("name", person.getName());
-                    intent.putExtra("image_id", person.getImageId());
+                    intent.putExtra("person", person);
                     mContext.startActivity(intent);
                 }
             });

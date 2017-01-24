@@ -1,10 +1,12 @@
 package com.silion.androidproject.materialdesign;
 
+import java.io.Serializable;
+
 /**
  * Created by silion on 2017/1/23.
  */
 
-public class Person {
+public class Person implements Serializable {
     private String mName;
     private int mImageId;
 

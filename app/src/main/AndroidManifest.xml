@@ -66,6 +66,14 @@
             android:label="Person"
             android:theme="@style/AppThemeNoActionBar">
         </activity>
+        <activity android:name=".alarm.AlarmActivity">
+        </activity>
+
+        <service
+            android:name=".alarm.LongRunningService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
     </application>
 
 </manifest>
