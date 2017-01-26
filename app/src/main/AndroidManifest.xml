@@ -74,6 +74,18 @@
             android:enabled="true"
             android:exported="true">
         </service>
+        <service
+            android:name=".aidl.AIDLService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.silion.androidproject.aidl"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+
+        <activity android:name=".aidl.AIDLActivity">
+        </activity>
     </application>
 
 </manifest>
