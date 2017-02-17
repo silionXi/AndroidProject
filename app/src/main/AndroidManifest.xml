@@ -80,11 +80,14 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="com.silion.androidproject.aidl"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </service>
 
         <activity android:name=".aidl.AIDLActivity">
+        </activity>
+        <activity android:name=".customview.CustomViewAcitivity">
         </activity>
     </application>
 
