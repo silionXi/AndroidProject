@@ -6,7 +6,7 @@
     android:id="@+id/activity_custom_view_acitivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.silion.androidproject.customview.CustomViewAcitivity">
+    tools:context="com.silion.androidproject.customview.CustomViewActivity">
 
     <com.silion.androidproject.customview.SimpleImageView
         android:layout_width="match_parent"

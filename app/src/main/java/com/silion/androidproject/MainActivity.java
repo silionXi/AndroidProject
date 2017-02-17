@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.silion.androidproject.aidl.AIDLActivity;
 import com.silion.androidproject.alarm.AlarmActivity;
-import com.silion.androidproject.customview.CustomViewAcitivity;
+import com.silion.androidproject.customview.CustomViewActivity;
 import com.silion.androidproject.jackson.JacksonActivity;
 import com.silion.androidproject.layoutinflater.LayoutInflaterActivity;
 import com.silion.androidproject.materialdesign.MaterialDesignActivity;
@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         datas.add(new Demo("MaterialDesign", MaterialDesignActivity.class));
         datas.add(new Demo("定时任务", AlarmActivity.class));
         datas.add(new Demo("AIDL", AIDLActivity.class));
-        datas.add(new Demo("自定义view", CustomViewAcitivity.class));
+        datas.add(new Demo("自定义view", CustomViewActivity.class));
         mListAdapter.addAll(datas);
     }
 
