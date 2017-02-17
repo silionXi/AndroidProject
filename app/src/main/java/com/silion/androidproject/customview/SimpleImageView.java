@@ -2,6 +2,7 @@ package com.silion.androidproject.customview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
@@ -21,6 +22,7 @@ public class SimpleImageView extends View {
     private Paint mBitmapPaint;
     private int mWidth;
     private int mHeight;
+    private Bitmap mBitmap;
 
     public SimpleImageView(Context context) {
         this(context, null);
@@ -37,7 +39,14 @@ public class SimpleImageView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        setMeasuredDimension(mWidth, mHeight);
+        // 获取宽的模式与大小
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int width = MeasureSpec.getSize(widthMeasureSpec);
+
+        //  获取高的模式与大小
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int height = MeasureSpec.getSize(heightMeasureSpec);
+        setMeasuredDimension(measuredWidth(widthMode, width), measuredHeight(heightMode, height));
     }
 
     @Override
@@ -47,7 +56,10 @@ public class SimpleImageView extends View {
             return;
         }
         // 绘制图片
-        canvas.drawBitmap(((BitmapDrawable) mDrawable).getBitmap(), getLeft(), getTop(), mBitmapPaint);
+        if (mBitmap == null) {
+            mBitmap = Bitmap.createScaledBitmap(((BitmapDrawable) mDrawable).getBitmap(), getMeasuredWidth(), getMeasuredHeight(), true);
+        }
+        canvas.drawBitmap(mBitmap, getLeft(), getTop(), mBitmapPaint);
     }
 
     private void initAttrs(AttributeSet attrs) {
@@ -75,5 +87,33 @@ public class SimpleImageView extends View {
         }
         mWidth = mDrawable.getIntrinsicWidth();
         mHeight = mDrawable.getIntrinsicHeight();
+    }
+
+    private int measuredWidth(int mode, int width) {
+        switch (mode) {
+            case MeasureSpec.UNSPECIFIED:
+            case MeasureSpec.AT_MOST:
+                break;
+            case MeasureSpec.EXACTLY:
+                mWidth = width;
+                break;
+            default:
+                break;
+        }
+        return mWidth;
+    }
+
+    private int measuredHeight(int mode, int height) {
+        switch (mode) {
+            case MeasureSpec.UNSPECIFIED:
+            case MeasureSpec.AT_MOST:
+                break;
+            case MeasureSpec.EXACTLY:
+                mHeight = height;
+                break;
+            default:
+                break;
+        }
+        return mHeight;
     }
 }
