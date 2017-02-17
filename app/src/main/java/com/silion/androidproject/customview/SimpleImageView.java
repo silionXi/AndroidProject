@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -60,6 +61,19 @@ public class SimpleImageView extends View {
             mBitmap = Bitmap.createScaledBitmap(((BitmapDrawable) mDrawable).getBitmap(), getMeasuredWidth(), getMeasuredHeight(), true);
         }
         canvas.drawBitmap(mBitmap, getLeft(), getTop(), mBitmapPaint);
+
+        // 保存画布状态
+        canvas.save();
+        // 旋转90°
+        canvas.rotate(90);
+
+        //绘制文字
+        mBitmapPaint.setColor(Color.YELLOW);
+        mBitmapPaint.setTextSize(150);
+        canvas.drawText("郭碧婷", getLeft(), getTop(), mBitmapPaint);
+
+        // 恢复原来的状态
+        canvas.restore();
     }
 
     private void initAttrs(AttributeSet attrs) {
