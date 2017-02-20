@@ -91,6 +91,8 @@
         </activity>
         <activity android:name=".customview.SimpleImageViewActivity">
         </activity>
+        <activity android:name=".customview.PullRefreshActivity">
+        </activity>
     </application>
 
 </manifest>

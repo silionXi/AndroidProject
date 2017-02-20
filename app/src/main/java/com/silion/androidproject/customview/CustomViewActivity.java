@@ -22,6 +22,8 @@ public class CustomViewActivity extends BaseActivity {
                 startActivity(imageViewIntent);
                 break;
             case R.id.btPullRefreshView:
+                Intent pullRefreshIntent = new Intent(this, PullRefreshActivity.class);
+                startActivity(pullRefreshIntent);
                 break;
             default:
                 break;
