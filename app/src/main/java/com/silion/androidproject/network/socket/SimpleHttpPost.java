@@ -51,6 +51,7 @@ public class SimpleHttpPost extends Thread {
             while (responseLine == null || !responseLine.contains("HTTP")) {
                 responseLine = in.readLine();
             }
+            Log.i(TAG, responseLine);
             while ((responseLine = in.readLine()) != null) {
                 Log.i(TAG, responseLine);
             }
