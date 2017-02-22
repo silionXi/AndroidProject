@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_socket"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.silion.androidproject.network.socket.SocketActivity">
+
+    <TextView
+        android:text="参考《Android开发进阶》P117"
+        android:textColor="#0000ff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btHttpServer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="startServer"
+        android:text="启动Socket服务器"/>
+
+    <Button
+        android:id="@+id/btRequest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="postRequest"
+        android:text="Post请求"/>
+</LinearLayout>

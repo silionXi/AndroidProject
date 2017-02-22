@@ -93,6 +93,8 @@
         </activity>
         <activity android:name=".customview.PullRefreshActivity">
         </activity>
+        <activity android:name=".network.socket.SocketActivity">
+        </activity>
     </application>
 
 </manifest>

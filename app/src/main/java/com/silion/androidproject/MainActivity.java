@@ -14,6 +14,7 @@ import com.silion.androidproject.customview.CustomViewActivity;
 import com.silion.androidproject.jackson.JacksonActivity;
 import com.silion.androidproject.layoutinflater.LayoutInflaterActivity;
 import com.silion.androidproject.materialdesign.MaterialDesignActivity;
+import com.silion.androidproject.network.socket.SocketActivity;
 import com.silion.androidproject.notification.NotificationActivity;
 import com.silion.androidproject.permission.PermissionActivity;
 import com.silion.androidproject.progressdialog.ProgressDialogActivity;
@@ -58,6 +59,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         datas.add(new Demo("定时任务", AlarmActivity.class));
         datas.add(new Demo("AIDL", AIDLActivity.class));
         datas.add(new Demo("自定义view", CustomViewActivity.class));
+        datas.add(new Demo("Socket模拟Http Post请求服务器", SocketActivity.class));
         mListAdapter.addAll(datas);
     }
 
