@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_simple_net"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.silion.androidproject.network.simplenet.SimpleNetActivity">
+
+    <TextView
+    android:text="参考《Android开发进阶》P130"
+    android:textColor="#0000ff"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btString"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sendStringRequest"
+        android:text="String Request"
+        android:textAllCaps="false"/>
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="result text"/>
+</LinearLayout>
