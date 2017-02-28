@@ -13,6 +13,15 @@
     android:textColor="#0000ff"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btMultipart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sendMultipartRequest"
+        android:text="Multipart Request"
+        android:textAllCaps="false"/>
+
     <Button
         android:id="@+id/btString"
         android:layout_width="match_parent"
