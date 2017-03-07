@@ -2,9 +2,10 @@
 <litepal>
     <dbname value="litepal"/>
 
-    <version value="1"/>
+    <version value="2"/>
 
     <list>
         <mapping class="com.silion.androidproject.litepal.model.News"/>
+        <mapping class="com.silion.androidproject.litepal.model.Comment"/>
     </list>
 </litepal>
