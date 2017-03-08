@@ -7,6 +7,10 @@ package com.silion.androidproject.litepal.model;
 public class Comment {
     private int id;
     private String content;
+    /**
+     * News和Comment建立一对多关系
+     */
+    private News news;
 
     public int getId() {
         return id;

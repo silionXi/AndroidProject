@@ -1,6 +1,8 @@
 package com.silion.androidproject.litepal.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by silion on 2017/3/7.
@@ -15,6 +17,18 @@ public class News {
     private String content;
     private Date publishDate;
     private int commentCount;
+    /**
+     * News和Introduction建立一对一关系
+     */
+    private Introduction introduction;
+    /**
+     * News和Comment建立一对多关系
+     */
+    private List<Comment> commentList = new ArrayList<>();
+    /**
+     * News和Category建立多对多关系
+     */
+    private List<Category> categoryList = new ArrayList<>();
 
     public int getId() {
         return id;
