@@ -1,10 +1,14 @@
 package com.silion.androidproject.litepal.model;
 
+import org.litepal.crud.DataSupport;
+
 /**
+ * 需要继承DataSupport才可以进行CRUD操作
+ *
  * Created by silion on 2017/3/7.
  */
 
-public class Introduction {
+public class Introduction extends DataSupport {
     private int id;
     private String guide;
     private String digest;

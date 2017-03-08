@@ -1,14 +1,18 @@
 package com.silion.androidproject.litepal.model;
 
+import org.litepal.crud.DataSupport;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
+ * 需要继承DataSupport才可以进行CRUD操作
+ *
  * Created by silion on 2017/3/7.
  */
 
-public class News {
+public class News extends DataSupport {
     /**
      * id这个字段可写可不写，不写LitePal会自动生成一个主键id
      */
@@ -68,5 +72,29 @@ public class News {
 
     public void setCommentCount(int commentCount) {
         this.commentCount = commentCount;
+    }
+
+    public Introduction getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(Introduction introduction) {
+        this.introduction = introduction;
+    }
+
+    public List<Comment> getCommentList() {
+        return commentList;
+    }
+
+    public void setCommentList(List<Comment> commentList) {
+        this.commentList = commentList;
+    }
+
+    public List<Category> getCategoryList() {
+        return categoryList;
+    }
+
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
     }
 }

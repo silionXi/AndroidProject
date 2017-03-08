@@ -2,7 +2,7 @@
 <litepal>
     <dbname value="litepal"/>
 
-    <version value="5"/>
+    <version value="6"/>
 
     <list>
         <mapping class="com.silion.androidproject.litepal.model.News"/>
