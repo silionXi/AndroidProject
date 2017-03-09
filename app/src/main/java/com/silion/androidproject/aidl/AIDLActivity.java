@@ -82,8 +82,8 @@ public class AIDLActivity extends BaseActivity {
 
     private void attempToBindService() {
         Intent intent = new Intent();
-        intent.setAction("com.silion.androidproject.aidl");
-        intent.setPackage("com.silion.androidproject");
+        intent.setAction("com.silion.androidproject.aidl"); // 服务器的action
+        intent.setPackage("com.silion.androidproject"); // 服务器的package
         bindService(intent, mConn, BIND_AUTO_CREATE);
     }
 
