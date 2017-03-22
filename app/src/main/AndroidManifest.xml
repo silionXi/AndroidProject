@@ -12,6 +12,8 @@
     <uses-permission android:name="android.permission.SEND_SMS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
 
     <application
         android:name=".MyApplication"
@@ -98,6 +100,8 @@
         <activity android:name=".network.simplenet.SimpleNetActivity">
         </activity>
         <activity android:name=".litepal.LitePalActivity">
+        </activity>
+        <activity android:name=".intent.IntentActivity">
         </activity>
     </application>
 

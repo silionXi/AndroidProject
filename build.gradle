@@ -21,3 +21,8 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+println("In build, gradle id is: " + gradle.hashCode())
+println("Home Dir: " + gradle.gradleHomeDir)
+println("User Home Dir: " + gradle.gradleUserHomeDir)
+println("Parent: " + gradle.parent)

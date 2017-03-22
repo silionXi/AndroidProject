@@ -1,1 +1,5 @@
 include ':app', ':libzxing', ':slibrary'
+println("In settings, gradle id is: " + gradle.hashCode())
+println("Home Dir: " + gradle.gradleHomeDir)
+println("User Home Dir: " + gradle.gradleUserHomeDir)
+println("Parent: " + gradle.parent)

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_intent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.silion.androidproject.intent.IntentActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="API Guides"
+        android:textColor="#0000ff"/>
+
+    <Button
+        android:id="@+id/btSetAlarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="createAlarm"
+        android:text="创建闹钟"/>
+
+    <Button
+        android:id="@+id/btSetTimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="createTimer"
+        android:text="创建定时器"/>
+
+    <Button
+        android:id="@+id/btShowAlarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showAlarm"
+        android:text="显示所有闹铃"/>
+
+    <Button
+        android:id="@+id/btInsertCalendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="insertCalendar"
+        android:text="添加日历事件"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btImageCapture"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="imageCapture"
+            android:text="拍摄照片"/>
+
+        <ImageView
+            android:id="@+id/ivThumb"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+    </LinearLayout>
+</LinearLayout>
