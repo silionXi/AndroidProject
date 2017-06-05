@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:scaleType="fitCenter"
-            tools:src="@drawable/girl01"/>
+            tools:src="@drawable/model01"/>
 
         <TextView
             android:id="@+id/tvName"

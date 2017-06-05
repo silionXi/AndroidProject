@@ -62,7 +62,7 @@ public class SimpleNetActivity extends AppCompatActivity {
         multi.addStringPart("location", "模拟的地理位置");
         multi.addStringPart("type", "0");
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.girl01);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.model01);
         // 直接从上传Bitmap
         multi.addBinaryPart("images", bitmapToBytes(bitmap));
         // 上传文件

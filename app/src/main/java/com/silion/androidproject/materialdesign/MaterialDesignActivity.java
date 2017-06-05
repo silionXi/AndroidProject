@@ -3,7 +3,6 @@ package com.silion.androidproject.materialdesign;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -114,17 +113,17 @@ public class MaterialDesignActivity extends BaseActivity {
     private void initPerson() {
         mPersonList.clear();
         for (int i = 0; i < 2; i++) {
-            mPersonList.add(new Person("Girl", R.drawable.girl01));
-            mPersonList.add(new Person("Girl", R.drawable.girl02));
-            mPersonList.add(new Person("Girl", R.drawable.girl03));
-            mPersonList.add(new Person("Girl", R.drawable.girl04));
-            mPersonList.add(new Person("Girl", R.drawable.girl05));
-            mPersonList.add(new Person("Girl", R.drawable.girl06));
-            mPersonList.add(new Person("Girl", R.drawable.girl07));
-            mPersonList.add(new Person("Girl", R.drawable.girl08));
-            mPersonList.add(new Person("Girl", R.drawable.girl09));
-            mPersonList.add(new Person("Girl", R.drawable.girl10));
-            mPersonList.add(new Person("Girl", R.drawable.girl11));
+            mPersonList.add(new Person("Girl", R.drawable.model01));
+            mPersonList.add(new Person("Girl", R.drawable.model02));
+            mPersonList.add(new Person("Girl", R.drawable.model03));
+            mPersonList.add(new Person("Girl", R.drawable.model04));
+            mPersonList.add(new Person("Girl", R.drawable.model05));
+            mPersonList.add(new Person("Girl", R.drawable.model06));
+            mPersonList.add(new Person("Girl", R.drawable.model07));
+            mPersonList.add(new Person("Girl", R.drawable.model08));
+            mPersonList.add(new Person("Girl", R.drawable.model09));
+            mPersonList.add(new Person("Girl", R.drawable.model10));
+            mPersonList.add(new Person("Girl", R.drawable.model11));
         }
     }
 
