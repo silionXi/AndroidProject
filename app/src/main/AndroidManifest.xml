@@ -103,6 +103,8 @@
         </activity>
         <activity android:name=".intent.IntentActivity">
         </activity>
+        <activity android:name=".leakcanarytest.LeakCanaryTestActivity">
+        </activity>
     </application>
 
 </manifest>
