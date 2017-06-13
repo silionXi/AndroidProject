@@ -3,7 +3,9 @@ package com.silion.androidproject.aidl;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +23,32 @@ public class AIDLActivity extends BaseActivity {
     private boolean mBound = false;
     private BookManager mBookManager;
     private List<Book> mBooks;
+    private static final int MESSAGE_NEW_BOOK_ARRIVED = 1;
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MESSAGE_NEW_BOOK_ARRIVED: {
+                    Log.d(TAG, "silion receive new book : " + msg.obj);
+                    break;
+                }
+                default:
+                    super.handleMessage(msg);
+            }
+        }
+    };
+
+    private IOnNewBookArrivedListener mListener = new IOnNewBookArrivedListener.Stub() {
+        @Override
+        public void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat, double aDouble, String aString) throws RemoteException {
+        }
+
+        @Override
+        public void onNewBookArrived(Book newBook) throws RemoteException {
+            mHandler.obtainMessage(MESSAGE_NEW_BOOK_ARRIVED, newBook).sendToTarget();
+        }
+    };
 
     private ServiceConnection mConn = new ServiceConnection() {
         @Override
@@ -34,6 +62,8 @@ public class AIDLActivity extends BaseActivity {
                 try {
                     mBooks = mBookManager.getBooks();
                     Log.d(TAG, "Books = " + mBooks);
+
+                    mBookManager.registerListener(mListener);
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
@@ -63,6 +93,13 @@ public class AIDLActivity extends BaseActivity {
     @Override
     protected void onStop() {
         super.onStop();
+        if (mBookManager != null && mBookManager.asBinder().isBinderAlive()) {
+            try {
+                mBookManager.unregisterListener(mListener);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
         if (mBound) {
             unbindService(mConn);
             mBound = false;

@@ -10,10 +10,14 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AIDLService extends Service {
     private static final String TAG = "AIDLService";
     private List<Book> mBooks = new ArrayList();
+    private CopyOnWriteArrayList<IOnNewBookArrivedListener> mListenerList = new CopyOnWriteArrayList<>();
+    private AtomicBoolean mIsServiceDestoryed = new AtomicBoolean(false);
 
     private BookManager.Stub mBookManager = new BookManager.Stub() {
         @Override
@@ -48,6 +52,26 @@ public class AIDLService extends Service {
                 }
             }
         }
+
+        @Override
+        public void registerListener(IOnNewBookArrivedListener listener) throws RemoteException {
+            if (!mListenerList.contains(listener)) {
+                mListenerList.add(listener);
+            } else {
+                Log.d(TAG, "Listener already exists");
+            }
+
+            Log.d(TAG, "registerListener list size = " + mListenerList.size());
+        }
+
+        @Override
+        public void unregisterListener(IOnNewBookArrivedListener listener) throws RemoteException {
+            if (mListenerList != null && mListenerList.contains(listener)) {
+                mListenerList.remove(listener);
+            } else {
+                Log.d(TAG, "Listener not found");
+            }
+        }
     };
 
     private MyBinder mBinder = new MyBinder();
@@ -69,6 +93,46 @@ public class AIDLService extends Service {
         book.setName("Android开发进阶");
         book.setPrice(69);
         mBooks.add(book);
+        new Thread(new ServiceWorker()).start();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mIsServiceDestoryed.set(true);
+    }
+
+    private void onNewBookArrived(Book book) throws RemoteException {
+        Log.d(TAG, "silion onNewBookArrived, notifi " + mListenerList.size() + " listeners: " + book);
+
+        mBooks.add(book);
+        for (IOnNewBookArrivedListener listener : mListenerList) {
+            listener.onNewBookArrived(book);
+        }
+    }
+
+    class ServiceWorker implements Runnable {
+
+        @Override
+        public void run() {
+            while (!mIsServiceDestoryed.get()) {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                int index = mBooks.size() + 1;
+                Book book = new Book();
+                book.setName("Android开发艺术探索-" + index);
+                book.setPrice(99);
+                try {
+                    onNewBookArrived(book);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     class MyBinder extends Binder {
