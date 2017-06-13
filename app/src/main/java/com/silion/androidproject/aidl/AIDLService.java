@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.Parcel;
+import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.util.Log;
 
@@ -16,7 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class AIDLService extends Service {
     private static final String TAG = "AIDLService";
     private List<Book> mBooks = new ArrayList();
-    private CopyOnWriteArrayList<IOnNewBookArrivedListener> mListenerList = new CopyOnWriteArrayList<>();
+    private RemoteCallbackList<IOnNewBookArrivedListener> mListenerList = new RemoteCallbackList<>();
     private AtomicBoolean mIsServiceDestoryed = new AtomicBoolean(false);
 
     private BookManager.Stub mBookManager = new BookManager.Stub() {
@@ -55,22 +56,16 @@ public class AIDLService extends Service {
 
         @Override
         public void registerListener(IOnNewBookArrivedListener listener) throws RemoteException {
-            if (!mListenerList.contains(listener)) {
-                mListenerList.add(listener);
-            } else {
-                Log.d(TAG, "Listener already exists");
-            }
+            mListenerList.register(listener);
 
-            Log.d(TAG, "registerListener list size = " + mListenerList.size());
+            Log.d(TAG, "registerListener listener size = " + mListenerList.getRegisteredCallbackCount());
         }
 
         @Override
         public void unregisterListener(IOnNewBookArrivedListener listener) throws RemoteException {
-            if (mListenerList != null && mListenerList.contains(listener)) {
-                mListenerList.remove(listener);
-            } else {
-                Log.d(TAG, "Listener not found");
-            }
+            mListenerList.unregister(listener);
+
+            Log.d(TAG, "unregisterListener listener size = " + mListenerList.getRegisteredCallbackCount());
         }
     };
 
@@ -103,12 +98,16 @@ public class AIDLService extends Service {
     }
 
     private void onNewBookArrived(Book book) throws RemoteException {
-        Log.d(TAG, "silion onNewBookArrived, notifi " + mListenerList.size() + " listeners: " + book);
+        Log.d(TAG, "silion onNewBookArrived, notifi " + mListenerList.getRegisteredCallbackCount() + " listeners: " + book);
 
         mBooks.add(book);
-        for (IOnNewBookArrivedListener listener : mListenerList) {
+
+        final int N = mListenerList.beginBroadcast();
+        for (int i = 0; i < N; i++) {
+            IOnNewBookArrivedListener listener = mListenerList.getBroadcastItem(i);
             listener.onNewBookArrived(book);
         }
+        mListenerList.finishBroadcast();
     }
 
     class ServiceWorker implements Runnable {
