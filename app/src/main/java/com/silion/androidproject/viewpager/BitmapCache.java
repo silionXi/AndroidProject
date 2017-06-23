@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import android.support.v4.util.LruCache;
 
 import com.android.volley.toolbox.ImageLoader;
-import com.samsung.slibrary.utils.MD5Utils;
+import com.silion.lsllibrary.utils.MD5Utils;
 
 import java.io.File;
 import java.io.FileInputStream;

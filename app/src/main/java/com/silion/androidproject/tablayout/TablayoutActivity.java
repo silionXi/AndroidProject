@@ -2,19 +2,14 @@ package com.silion.androidproject.tablayout;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.graphics.Color;
-import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.samsung.slibrary.utils.DimensionUtils;
 import com.silion.androidproject.BaseActivity;
 import com.silion.androidproject.R;
 
