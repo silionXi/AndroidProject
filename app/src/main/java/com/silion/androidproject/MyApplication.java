@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import org.litepal.LitePalApplication;
 
@@ -23,6 +24,7 @@ public class MyApplication extends LitePalApplication {
             return;
         }
         mRefWatcher = LeakCanary.install(this);
+        ZXingLibrary.initDisplayOpinion(this);
     }
 
     public static Context getContext() {

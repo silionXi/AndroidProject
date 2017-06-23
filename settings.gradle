@@ -1,4 +1,4 @@
-include ':app', ':libzxing', ':lsllibrary'
+include ':app', ':lsllibrary'
 println("In settings, gradle id is: " + gradle.hashCode())
 println("Home Dir: " + gradle.gradleHomeDir)
 println("User Home Dir: " + gradle.gradleUserHomeDir)

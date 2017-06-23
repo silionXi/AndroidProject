@@ -14,8 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.silion.androidproject.R;
-import com.xys.libzxing.zxing.activity.CaptureActivity;
-import com.xys.libzxing.zxing.encoding.EncodingUtils;
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 public class ZXingActivity extends AppCompatActivity {
     private TextView resultTextView;
@@ -52,7 +52,7 @@ public class ZXingActivity extends AppCompatActivity {
                 String contentString = qrStrEditText.getText().toString();
                 if (!contentString.equals("")) {
                     //根据字符串生成二维码图片并显示在界面上，第二个参数为图片的大小（350*350）
-                    Bitmap qrCodeBitmap = EncodingUtils.createQRCode(contentString, 350, 350,
+                    Bitmap qrCodeBitmap = CodeUtils.createImage(contentString, 350, 350,
                             mCheckBox.isChecked() ?
                                     BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher) :
                                     null);
