@@ -14,7 +14,7 @@ import android.view.View;
 import com.silion.androidproject.R;
 
 /**
- * 继承View自定义一个ImageView, 过程如下
+ * <Android开发进阶P36-45>继承View自定义一个ImageView, 过程如下
  * 1. 继承自View创建自定义控件
  * 2. 如有需要自定义View属性, 也就是在values/attrs.xml中定义属性集
  * 3. 在xml中引入命名控件, 设置属性
