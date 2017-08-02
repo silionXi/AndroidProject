@@ -14,9 +14,14 @@ import android.view.View;
 import com.silion.androidproject.R;
 
 /**
- * Created by silion on 2017/2/16.
+ * 继承View自定义一个ImageView, 过程如下
+ * 1. 继承自View创建自定义控件
+ * 2. 如有需要自定义View属性, 也就是在values/attrs.xml中定义属性集
+ * 3. 在xml中引入命名控件, 设置属性
+ * 4. 在代码中读取xml中的属性, 初始化视图
+ * 5. 测量视图大小
+ * 6. 绘制视图内容
  */
-
 public class SimpleImageView extends View {
 
     private Drawable mDrawable;
@@ -47,6 +52,7 @@ public class SimpleImageView extends View {
         //  获取高的模式与大小
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
+        // 调用setMeasuredDimension设置该视图的大小
         setMeasuredDimension(measuredWidth(widthMode, width), measuredHeight(heightMode, height));
     }
 
@@ -64,7 +70,7 @@ public class SimpleImageView extends View {
 
         // 保存画布状态
         canvas.save();
-        // 旋转90°
+        // 逆时针?旋转90°
         canvas.rotate(90);
 
         //绘制文字
