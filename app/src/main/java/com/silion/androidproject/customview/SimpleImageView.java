@@ -70,7 +70,7 @@ public class SimpleImageView extends View {
 
         // 保存画布状态
         canvas.save();
-        // 逆时针?旋转90°
+        // 顺时针?旋转90°
         canvas.rotate(90);
 
         //绘制文字
