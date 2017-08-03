@@ -106,6 +106,8 @@
         </activity>
         <activity android:name=".leakcanarytest.LeakCanaryTestActivity">
         </activity>
+        <activity android:name=".constraintLayout.ConstraintActivity">
+        </activity>
     </application>
 
 </manifest>

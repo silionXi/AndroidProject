@@ -46,4 +46,6 @@ dependencies {
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     compile project(':lsllibrary')
+    // 约束布局ConstraintLayout
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

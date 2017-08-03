@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.silion.androidproject.aidl.AIDLActivity;
 import com.silion.androidproject.alarm.AlarmActivity;
+import com.silion.androidproject.constraintLayout.ConstraintActivity;
 import com.silion.androidproject.customview.CustomViewActivity;
 import com.silion.androidproject.intent.IntentActivity;
 import com.silion.androidproject.jackson.JacksonActivity;
@@ -68,6 +69,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         datas.add(new Demo("LitePal数据库框架", LitePalActivity.class));
         datas.add(new Demo("通用Intent", IntentActivity.class));
         datas.add(new Demo("LeakCanary测试", LeakCanaryTestActivity.class));
+        datas.add(new Demo("约束布局ConstraintLayout", ConstraintActivity.class));
         mListAdapter.addAll(datas);
     }
 
