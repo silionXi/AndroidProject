@@ -129,7 +129,7 @@ public abstract class RefreshLayoutBase<T extends View> extends ViewGroup implem
         // header的高度为屏幕高度的1/4
         mHeaderHeight = mScreenHeight / 4;
 
-        // 初始化真个布局
+        // 初始化整个布局
         initLayout(context);
     }
 
@@ -154,8 +154,8 @@ public abstract class RefreshLayoutBase<T extends View> extends ViewGroup implem
 
     /*
      * 布局函数，将header, content view,
-     * footer这三个view从上到下布局。布局完成后通过Scroller滚动到header的底部，即滚动距离为header的高度 +
-     * 本视图的paddingTop，从而达到隐藏header的效果.
+     * footer这三个view从上到下布局。布局完成后通过Scroller滚动到header的底部，
+     * 即滚动距离为header的高度 + 本视图的paddingTop，从而达到隐藏header的效果.
      * @see android.view.ViewGroup#onLayout(boolean, int, int, int, int)
      */
     @Override
@@ -168,7 +168,9 @@ public abstract class RefreshLayoutBase<T extends View> extends ViewGroup implem
             top += child.getMeasuredHeight();
         }
 
+        // 计算初始化滑动的y轴距离
         mInitScrollY = getPaddingTop() + mHeaderView.getMeasuredHeight();
+        // 滑动到位置从而达到隐藏header view的效果
         scrollTo(0, mInitScrollY);
     }
 
@@ -193,8 +195,11 @@ public abstract class RefreshLayoutBase<T extends View> extends ViewGroup implem
                 break;
             case MotionEvent.ACTION_MOVE:
                 mYOffset = (int) (ev.getRawY() - mLastY);
-                // 如果拉到了顶部, 并且是下拉,则拦截触摸事件,从而转到onTouchEvent来处理下拉刷新事件
+                // 并不是每次ACTION_MOVE都会调用onInterceptTouchEvent
+                android.util.Log.d("silion", "silion onInterceptTouchEvent : ACTION_MOVE");
+                // 如果拉到了顶部, 并且是下拉(mYOffset > 0),则拦截触摸事件,从而转到onTouchEvent来处理下拉刷新事件
                 if (isTop() & mYOffset > 0) {
+                    android.util.Log.d("silion", "silion onInterceptTouchEvent : YES");
                     return true;
                 }
                 break;
@@ -209,7 +214,9 @@ public abstract class RefreshLayoutBase<T extends View> extends ViewGroup implem
         Log.d(TAG, "@@@ onTouchEvent : action = " + event.getAction());
         switch (event.getAction()) {
             case MotionEvent.ACTION_MOVE:
+                // 获取手指触摸的当前y坐标
                 int currentY = (int) event.getRawY();
+                // 当前坐标减去按下时的y坐标得到y轴上的偏移量
                 mYOffset = currentY - mLastY;
                 if (mCurrentStatus != STATUS_LOADING) {
                     changeScrollY(mYOffset);
@@ -397,7 +404,7 @@ public abstract class RefreshLayoutBase<T extends View> extends ViewGroup implem
         setupHeaderView(context);
         // 设置内容视图
         setupContentView(context);
-        // 设置布局参数
+        // 设置内容视图布局参数
         setDefaultContentLayoutParams();
         // 添加mContentView
         addView(mContentView);
@@ -410,6 +417,9 @@ public abstract class RefreshLayoutBase<T extends View> extends ViewGroup implem
         addView(mFooterView);
     }
 
+    /**
+     * 设置内容视图布局参数, width和heigh都是match_parent
+     */
     protected void setDefaultContentLayoutParams() {
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         mContentView.setLayoutParams(params);
@@ -436,6 +446,10 @@ public abstract class RefreshLayoutBase<T extends View> extends ViewGroup implem
         mHeaderView = LayoutInflater.from(context).inflate(R.layout.pull_to_refresh_header, this, false);
         mHeaderView.setLayoutParams(new ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT, mHeaderHeight));
         mHeaderView.setBackgroundColor(Color.RED);
+        /*
+        header的高度为1/4的屏幕高度,但是,它只有100px是有效的显示区域
+        取余为paddingTop,这样是为了达到下拉的效果
+         */
         mHeaderView.setPadding(0, mHeaderHeight - 100, 0, 0);
         addView(mHeaderView);
 
