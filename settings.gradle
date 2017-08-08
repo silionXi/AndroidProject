@@ -1,4 +1,4 @@
-include ':app', ':lsllibrary'
+include ':app', ':lsllibrary', ':simplenet'
 println("In settings, gradle id is: " + gradle.hashCode())
 println("Home Dir: " + gradle.gradleHomeDir)
 println("User Home Dir: " + gradle.gradleUserHomeDir)
