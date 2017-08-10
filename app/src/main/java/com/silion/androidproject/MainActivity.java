@@ -25,6 +25,7 @@ import com.silion.androidproject.permission.PermissionActivity;
 import com.silion.androidproject.progressdialog.ProgressDialogActivity;
 import com.silion.androidproject.recycleview.RecyclerViewActivity;
 import com.silion.androidproject.serializable.SerializeActivity;
+import com.silion.androidproject.svg.SVGActivity;
 import com.silion.androidproject.tablayout.TablayoutActivity;
 import com.silion.androidproject.viewpager.ViewPagerActivity;
 import com.silion.androidproject.zxing.ZXingActivity;
@@ -70,6 +71,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         datas.add(new Demo("通用Intent", IntentActivity.class));
         datas.add(new Demo("LeakCanary测试", LeakCanaryTestActivity.class));
         datas.add(new Demo("约束布局ConstraintLayout", ConstraintActivity.class));
+        datas.add(new Demo("矢量图", SVGActivity.class));
         mListAdapter.addAll(datas);
     }
 

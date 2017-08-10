@@ -48,4 +48,6 @@ dependencies {
     compile project(':lsllibrary')
     // 约束布局ConstraintLayout
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    // SVG 和 Path 动画
+    compile 'com.eftimoff:android-pathview:1.0.8@aar'
 }
