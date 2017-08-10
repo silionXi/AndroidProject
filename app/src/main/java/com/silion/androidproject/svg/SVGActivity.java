@@ -9,7 +9,15 @@ import com.eftimoff.androipathview.PathView;
 import com.silion.androidproject.R;
 
 /**
- * Created by silion on 2017/8/9.
+ * 动画播放SVG图片
+ * 1. 依赖:compile 'com.eftimoff:android-pathview:1.0.8@aar'
+ * 2. 使用 com.eftimoff.androipathview.PathView 控件
+ * 3. 代码中设置动画
+ *
+ * 参考
+ * 一行代码实现炫酷动画(https://mp.weixin.qq.com/s/wDdw1kcPaJwote1st_46wA)
+ * 在 Android 中使用 SVG 矢量图(http://blog.csdn.net/cniao5/article/details/72121635)
+ * Android 中 Iconfont 图标的使用以及自定义(http://blog.csdn.net/cniao5/article/details/72457771)
  */
 
 public class SVGActivity extends Activity {
