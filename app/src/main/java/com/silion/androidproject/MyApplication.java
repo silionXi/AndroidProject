@@ -19,12 +19,16 @@ public class MyApplication extends LitePalApplication {
 
     @Override
     public void onCreate() {
-        mContext = getApplicationContext();
+        super.onCreate();
         if (LeakCanary.isInAnalyzerProcess(this)) {
-            return;
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+        } else {
+            mRefWatcher = LeakCanary.install(this);
+
         }
-        mRefWatcher = LeakCanary.install(this);
         ZXingLibrary.initDisplayOpinion(this);
+        mContext = getApplicationContext();
     }
 
     public static Context getContext() {

@@ -42,10 +42,10 @@ dependencies {
     compile files('libs/httpclient/httpcore-4.3.3.jar')
     compile 'org.litepal.android:core:1.5.0'
     compile 'cn.yipianfengye.android:zxing-library:2.1'
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
-    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     compile project(':lsllibrary')
+    // 内存泄漏检测LeakCanary
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.2'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.2'
     // 约束布局ConstraintLayout
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     // SVG 和 Path 动画
