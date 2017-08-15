@@ -112,6 +112,8 @@
         </activity>
         <activity android:name=".singleton.SingletonActivity">
         </activity>
+        <activity android:name=".thread.ThreadActvity">
+        </activity>
     </application>
 
 </manifest>

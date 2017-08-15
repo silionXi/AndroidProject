@@ -28,6 +28,7 @@ import com.silion.androidproject.serializable.SerializeActivity;
 import com.silion.androidproject.singleton.SingletonActivity;
 import com.silion.androidproject.svg.SVGActivity;
 import com.silion.androidproject.tablayout.TablayoutActivity;
+import com.silion.androidproject.thread.ThreadActvity;
 import com.silion.androidproject.viewpager.ViewPagerActivity;
 import com.silion.androidproject.zxing.ZXingActivity;
 
@@ -74,6 +75,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         datas.add(new Demo("约束布局ConstraintLayout", ConstraintActivity.class));
         datas.add(new Demo("矢量图", SVGActivity.class));
         datas.add(new Demo("单例模式", SingletonActivity.class));
+        datas.add(new Demo("生产者-消费者模式", ThreadActvity.class));
         mListAdapter.addAll(datas);
     }
 
