@@ -40,6 +40,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
     private ListView mListView;
     private ListAdapter mListAdapter;
+    private String neverUsed = "abc";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +86,10 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 mListAdapter.notifyDataSetChanged();
             }
         }.start();
+    }
+
+    public void unusedMethod() {
+        android.util.Log.d("silion", "never used");
     }
 
     @Override

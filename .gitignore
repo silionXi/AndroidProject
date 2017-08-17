@@ -12,3 +12,5 @@ gradlew.bat
 /build
 /captures
 import-summary.txt
+/app/app-release.apk
+/app/app-release
