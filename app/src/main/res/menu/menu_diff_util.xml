@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/init"
+        android:title="初始化"/>
+
+    <item
+        android:id="@+id/update"
+        android:title="普通更新"/>
+
+    <item
+        android:id="@+id/updateDiff"
+        android:title="Diff更新"/>
+
+    <item
+        android:id="@+id/single"
+        android:title="Diff更新单个"/>
+</menu>

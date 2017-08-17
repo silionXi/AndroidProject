@@ -114,6 +114,8 @@
         </activity>
         <activity android:name=".thread.ThreadActvity">
         </activity>
+        <activity android:name=".diffutil.DiffUtilActivity">
+        </activity>
     </application>
 
 </manifest>
