@@ -18,6 +18,7 @@ import com.silion.androidproject.jackson.JacksonActivity;
 import com.silion.androidproject.layoutinflater.LayoutInflaterActivity;
 import com.silion.androidproject.leakcanarytest.LeakCanaryTestActivity;
 import com.silion.androidproject.litepal.LitePalActivity;
+import com.silion.androidproject.logger.LoggerActivity;
 import com.silion.androidproject.materialdesign.MaterialDesignActivity;
 import com.silion.androidproject.network.simplenet.SimpleNetActivity;
 import com.silion.androidproject.network.socket.SocketActivity;
@@ -82,6 +83,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 datas.add(new Demo("单例模式", SingletonActivity.class));
                 datas.add(new Demo("生产者-消费者模式", ThreadActvity.class));
                 datas.add(new Demo("DiffUtil-刷新RecyleView", DiffUtilActivity.class));
+                datas.add(new Demo("Looger", LoggerActivity.class));
                 mListAdapter.addAll(datas);
                 mListAdapter.notifyDataSetChanged();
             }
