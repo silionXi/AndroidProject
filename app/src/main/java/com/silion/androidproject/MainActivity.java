@@ -15,6 +15,7 @@ import com.silion.androidproject.customview.CustomViewActivity;
 import com.silion.androidproject.diffutil.DiffUtilActivity;
 import com.silion.androidproject.intent.IntentActivity;
 import com.silion.androidproject.jackson.JacksonActivity;
+import com.silion.androidproject.launchmode.StandardActivity;
 import com.silion.androidproject.layoutinflater.LayoutInflaterActivity;
 import com.silion.androidproject.leakcanarytest.LeakCanaryTestActivity;
 import com.silion.androidproject.litepal.LitePalActivity;
@@ -84,6 +85,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 datas.add(new Demo("生产者-消费者模式", ThreadActvity.class));
                 datas.add(new Demo("DiffUtil-刷新RecyleView", DiffUtilActivity.class));
                 datas.add(new Demo("Looger", LoggerActivity.class));
+                datas.add(new Demo("LaunchMode", StandardActivity.class));
                 mListAdapter.addAll(datas);
                 mListAdapter.notifyDataSetChanged();
             }
