@@ -2,6 +2,7 @@ package com.silion.androidproject.aidl;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.Parcel;
@@ -66,6 +67,25 @@ public class AIDLService extends Service {
             mListenerList.unregister(listener);
 
             Log.d(TAG, "unregisterListener listener size = " + mListenerList.getRegisteredCallbackCount());
+        }
+
+        @Override
+        public boolean onTransact(int code, Parcel data, Parcel reply, int flags) throws RemoteException {
+            int check = checkCallingOrSelfPermission("com.silion.androidproject.permission.ACCESS_BOOK_SERVICE");
+            if (check == PackageManager.PERMISSION_DENIED) {
+                return false;
+            }
+
+            String packageName = null;
+            String[] packages = getPackageManager().getPackagesForUid(getCallingUid());
+            if (packages != null && packages.length > 0) {
+                packageName = packages[0];
+            }
+            if (!packageName.startsWith("com.silion")) {
+                return false;
+            }
+
+            return super.onTransact(code, data, reply, flags);
         }
     };
 
