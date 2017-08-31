@@ -24,6 +24,7 @@ import com.silion.androidproject.materialdesign.MaterialDesignActivity;
 import com.silion.androidproject.network.simplenet.SimpleNetActivity;
 import com.silion.androidproject.network.socket.SocketActivity;
 import com.silion.androidproject.notification.NotificationActivity;
+import com.silion.androidproject.otto.OttoActivity;
 import com.silion.androidproject.permission.PermissionActivity;
 import com.silion.androidproject.progressdialog.ProgressDialogActivity;
 import com.silion.androidproject.recycleview.RecyclerViewActivity;
@@ -86,6 +87,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 datas.add(new Demo("DiffUtil-刷新RecyleView", DiffUtilActivity.class));
                 datas.add(new Demo("Looger", LoggerActivity.class));
                 datas.add(new Demo("LaunchMode", StandardActivity.class));
+                datas.add(new Demo("Otto事件总线", OttoActivity.class));
                 mListAdapter.addAll(datas);
                 mListAdapter.notifyDataSetChanged();
             }

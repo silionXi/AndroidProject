@@ -3,8 +3,10 @@ package com.silion.androidproject;
 import android.app.Application;
 import android.content.Context;
 
+import com.silion.androidproject.otto.MainThreadBus;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.squareup.otto.Bus;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import org.litepal.LitePalApplication;
@@ -16,6 +18,7 @@ import org.litepal.LitePalApplication;
 public class MyApplication extends LitePalApplication {
     private static Context mContext;
     private static RefWatcher mRefWatcher;
+    private static Bus mBus = new MainThreadBus();
 
     @Override
     public void onCreate() {
@@ -37,5 +40,9 @@ public class MyApplication extends LitePalApplication {
 
     public static RefWatcher getRefWatcher() {
         return mRefWatcher;
+    }
+
+    public static Bus getBus() {
+        return mBus;
     }
 }
