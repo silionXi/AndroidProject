@@ -96,6 +96,9 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
     public void unusedMethod() {
         android.util.Log.d("silion", "never used");
+        if (this instanceof BaseActivity) { //Condition 'this instanceof BaseActivity' is always 'true'
+            
+        }
     }
 
     @Override
