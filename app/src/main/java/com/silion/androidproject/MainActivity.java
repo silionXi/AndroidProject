@@ -12,6 +12,7 @@ import com.silion.androidproject.aidl.AIDLActivity;
 import com.silion.androidproject.alarm.AlarmActivity;
 import com.silion.androidproject.constraintLayout.ConstraintActivity;
 import com.silion.androidproject.customview.CustomViewActivity;
+import com.silion.androidproject.databinding.BindingActivity;
 import com.silion.androidproject.diffutil.DiffUtilActivity;
 import com.silion.androidproject.intent.IntentActivity;
 import com.silion.androidproject.jackson.JacksonActivity;
@@ -88,6 +89,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 datas.add(new Demo("Looger", LoggerActivity.class));
                 datas.add(new Demo("LaunchMode", StandardActivity.class));
                 datas.add(new Demo("Otto事件总线", OttoActivity.class));
+                datas.add(new Demo("Android DataBinding", BindingActivity.class));
                 mListAdapter.addAll(datas);
                 mListAdapter.notifyDataSetChanged();
             }
