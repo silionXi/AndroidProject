@@ -4,7 +4,7 @@ import android.util.Log;
 
 /**
  * 饿汉单例模式
- * 需要传参或者只是适用该类全局变量时不好
+ * 需要传参或者只是使用该类全局变量时不好
  */
 
 public class Singleton1 {
