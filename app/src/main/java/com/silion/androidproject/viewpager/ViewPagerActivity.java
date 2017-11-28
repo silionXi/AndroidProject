@@ -33,9 +33,19 @@ public class ViewPagerActivity extends BaseActivity {
             return mViewList.size();
         }
 
+        /**
+         * silion_comment:
+         * 调用次数有点搞不懂
+         * 每个item的Object(这里直接是View) / Position / width会封装成ItemInfo保存在ArrayList<ItemInfo>
+         * 通过这个方法判断list的ItemInfo和ViewPager的页是否对应
+         *
+         * @param view ViewPager的子类
+         * @param object ItemInfo的object
+         */
         @Override
         public boolean isViewFromObject(View view, Object object) {
-            return view == object;
+            android.util.Log.d("silion", "isViewFromObject view = " + view + ", object = " + object);
+            return false;
         }
 
         @Override
@@ -44,11 +54,13 @@ public class ViewPagerActivity extends BaseActivity {
             ImageView iv = (ImageView) ViewPagerActivity.this.getLayoutInflater().inflate(R.layout.viewpager_show, mViewPager, false);
             getBitmap(iv, bitmapView.mUrl, bitmapView.mRes, bitmapView.mRes);
             container.addView(iv);
+            android.util.Log.d("silion", "instantiateItem position = " + position + ", object = " + iv);
             return iv;
         }
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
+            android.util.Log.d("silion", "destroyItem position = " + position + ", object = " + object);
             container.removeView((View) object);
         }
     };
