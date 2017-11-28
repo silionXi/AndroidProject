@@ -36,8 +36,10 @@ public class ViewPagerActivity extends BaseActivity {
         /**
          * silion_comment:
          * 调用次数有点搞不懂
+         *
          * 每个item的Object(这里直接是View) / Position / width会封装成ItemInfo保存在ArrayList<ItemInfo>
          * 通过这个方法判断list的ItemInfo和ViewPager的页是否对应
+         * 如果强制返回false，所有页面都显示不了
          *
          * @param view ViewPager的子类
          * @param object ItemInfo的object
@@ -45,7 +47,7 @@ public class ViewPagerActivity extends BaseActivity {
         @Override
         public boolean isViewFromObject(View view, Object object) {
             android.util.Log.d("silion", "isViewFromObject view = " + view + ", object = " + object);
-            return false;
+            return view == object;
         }
 
         @Override
