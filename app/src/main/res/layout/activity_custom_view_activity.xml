@@ -33,4 +33,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My Android Text View"/>
+
+    <Button
+        android:id="@+id/btDragViewGroup"
+        android:text="自定义拖拽ViewGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

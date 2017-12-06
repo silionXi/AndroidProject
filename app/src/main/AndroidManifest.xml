@@ -158,6 +158,7 @@
         </activity>
         <activity android:name=".databinding.BindingActivity">
         </activity>
+        <activity android:name=".customview.DragViewActivity"></activity>
     </application>
 
 </manifest>
