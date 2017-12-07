@@ -24,10 +24,11 @@ public class DragViewGroup extends FrameLayout {
     // 记录手指上次触摸的坐标
     private int mStartX;
     private int mStartY;
-    // 记录子View移动前的坐标
-    private int mTouchedViewX;
     // 被触摸的子View
     private View mTouchedView;
+    // 记录被触摸子View移动前的坐标
+    private int mTouchedViewStartX;
+    private int mTouchedViewStartY;
     // 系统认为的最低滑动距离
     private int mTouchSlop;
 
@@ -74,9 +75,12 @@ public class DragViewGroup extends FrameLayout {
                 mStartY = y;
 
                 mTouchedView = findTouchedView(x, y);
-                Log.d(TAG, "touch View x = " + mTouchedView.getX() + ", y = " + mTouchedView.getY() +
-                        ", translateX = " + mTouchedView.getTranslationX() + ", translateY = " + mTouchedView.getTranslationY());
-//                mTouchedView.bringToFront(); // Parent会redraw
+                if (mTouchedView != null) {
+                    mTouchedView.animate().cancel();
+                    mTouchedViewStartX = (int) mTouchedView.getX();
+                    mTouchedViewStartY = (int) mTouchedView.getY();
+//                mTouchedView.bringToFront(); // Parent会redraw，所有子View也会初始化
+                }
                 break;
             case MotionEvent.ACTION_MOVE:
                 int moveX = x - mStartX;
@@ -90,7 +94,16 @@ public class DragViewGroup extends FrameLayout {
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                mTouchedView = null;
+                if (mTouchedView != null) {
+
+                    // 回弹，有bug
+                    int viewMoveX = (int) mTouchedView.getX() - mTouchedViewStartX;
+                    int viewMoveY = (int) mTouchedView.getY() - mTouchedViewStartY;
+                    if ((viewMoveX * viewMoveX + viewMoveY * viewMoveY) < (300 * 300)) {
+                        mTouchedView.animate().translationXBy(-viewMoveX).translationYBy(-viewMoveY).setDuration(2000);
+                    }
+                    mTouchedView = null;
+                }
                 break;
             default:
                 return false;
@@ -135,10 +148,14 @@ public class DragViewGroup extends FrameLayout {
      * @return 触摸点是否在View内
      */
     private boolean pointInView(int x, int y, View child) {
-        int left = child.getLeft();
-        int top = child.getTop();
-        int right = child.getRight();
-        int bottom = child.getBottom();
+        int left = (int) child.getX();
+        int top = (int) child.getY();
+        int right = left + child.getWidth();
+        int bottom = top + child.getHeight();
+        Log.d(TAG, "pointInView x = " + x);
+        Log.d(TAG, "pointInView left = " + left + ", right = " + right);
+        Log.d(TAG, "pointInView y = " + y);
+        Log.d(TAG, "pointInView top = " + top + ", bottom = " + bottom);
         return x >= left && x <= right && y >= top && y <= bottom;
     }
 }

@@ -49,8 +49,8 @@ public class DragViewActivity extends Activity {
 //                break;
 //            case R.id.iv3:
 ////                ((View) mIv3.getParent()).scrollTo(mWidth / 3, 0);
-////                mIv3.scrollTo(mWidth / 3, 0);
-//                mIv3.offsetLeftAndRight(-mWidth / 3);
+////                mIv3.scrollTo(mWidth / 3, 0); // 有效点击也会移动
+//                mIv3.offsetLeftAndRight(-mWidth / 3); // 有效点击也会移动
 //                Toast.makeText(this, "点击了iv3", Toast.LENGTH_SHORT).show();
 //                break;
 //        }
