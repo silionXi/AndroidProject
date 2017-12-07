@@ -3,6 +3,7 @@ package com.silion.androidproject.customview;
 import android.content.Context;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -13,8 +14,25 @@ import android.widget.FrameLayout;
 
 public class ViewDragHelperLayout extends FrameLayout {
     private ViewDragHelper mViewDragHelper;
+    // 子view开始的位置
+    private int mViewStartX;
+    private int mViewStartY;
+    // 屏幕尺寸
+    private int mWidth;
+    private int mHeight;
 
     private ViewDragHelper.Callback mCallback = new ViewDragHelper.Callback() {
+        /**
+         * 开始拖拽时调用
+         * @param capturedChild
+         * @param activePointerId
+         */
+        @Override
+        public void onViewCaptured(View capturedChild, int activePointerId) {
+            mViewStartX = (int) capturedChild.getX();
+            mViewStartY = (int) capturedChild.getY();
+        }
+
         /**
          * 判断是不是要操作的View，这里直接放回true，即所有子View都是目标
          * @param child
@@ -51,35 +69,40 @@ public class ViewDragHelperLayout extends FrameLayout {
         }
 
         /**
-         * 手指释放时回调
+         * 手指释放时调用
          * @param releasedChild
          * @param xvel
          * @param yvel
          */
         @Override
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
-            super.onViewReleased(releasedChild, xvel, yvel);
+            // 超过屏幕则回弹
+            if (releasedChild.getLeft() < 0 || releasedChild.getRight() > mWidth || releasedChild.getTop() < 0 || releasedChild.getBottom() > mHeight) {
+                mViewDragHelper.settleCapturedViewAt(mViewStartX, mViewStartY);
+                //mViewDragHelper.smoothSlideViewTo(releasedChild, mViewStartX, mViewStartY);
+                invalidate();
+            }
         }
     };
 
     public ViewDragHelperLayout(Context context) {
         super(context);
-        initView();
+        initView(context);
     }
 
     public ViewDragHelperLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initView();
+        initView(context);
     }
 
     public ViewDragHelperLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initView();
+        initView(context);
     }
 
     public ViewDragHelperLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        initView();
+        initView(context);
     }
 
     @Override
@@ -94,7 +117,18 @@ public class ViewDragHelperLayout extends FrameLayout {
         return true;
     }
 
-    private void initView() {
+    @Override
+    public void computeScroll() {
+        super.computeScroll();
+        if (mViewDragHelper != null && mViewDragHelper.continueSettling(true)) {
+            invalidate();
+        }
+    }
+
+    private void initView(Context context) {
         mViewDragHelper = ViewDragHelper.create(this, mCallback);
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        mWidth = displayMetrics.widthPixels;
+        mHeight = displayMetrics.heightPixels;
     }
 }
