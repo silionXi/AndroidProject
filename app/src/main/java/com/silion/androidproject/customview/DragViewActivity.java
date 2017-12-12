@@ -3,6 +3,7 @@ package com.silion.androidproject.customview;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ import butterknife.OnClick;
  */
 
 public class DragViewActivity extends Activity {
+    private static final String TAG = "DragViewActivity";
     @BindView(R.id.iv1)
     ImageView mIv1;
     @BindView(R.id.iv2)
@@ -29,6 +31,7 @@ public class DragViewActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG, "onCreate----------------start");
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_drag_view);
@@ -36,6 +39,21 @@ public class DragViewActivity extends Activity {
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         mWidth = displayMetrics.widthPixels;
         mHeight = displayMetrics.heightPixels;
+        Log.d(TAG, "onCreate----------------end");
+    }
+
+    @Override
+    protected void onStart() {
+        Log.d(TAG, "onStart----------------start");
+        super.onStart();
+        Log.d(TAG, "onStart----------------end");
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d(TAG, "onResume----------------start");
+        super.onResume();
+        Log.d(TAG, "onResume----------------end");
     }
 
 //    @OnClick({R.id.iv1, R.id.iv2, R.id.iv3})

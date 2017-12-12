@@ -8,6 +8,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.TextView;
 
 /**
@@ -15,6 +16,7 @@ import android.widget.TextView;
  */
 
 public class GradientTextView extends TextView {
+    private static final String TAG = "GradientTextView";
     private Paint mPaint;
     private LinearGradient mLinearGradient;
     private Matrix mGradientMatrix;
@@ -42,10 +44,12 @@ public class GradientTextView extends TextView {
     }
 
     private void init() {
+        Log.d(TAG, "init");
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        Log.d(TAG, "onSizeChanged");
         super.onSizeChanged(w, h, oldw, oldh);
         if (mViewWidth == 0) {
             mViewWidth = getMeasuredWidth();
@@ -61,7 +65,20 @@ public class GradientTextView extends TextView {
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        Log.d(TAG, "onMeasure");
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        Log.d(TAG, "onLayout");
+        super.onLayout(changed, left, top, right, bottom);
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
+        Log.d(TAG, "onDraw");
         super.onDraw(canvas);
         if (mGradientMatrix != null) {
             mTranslate += mViewWidth / 5;
