@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.silion.androidproject.otto.MainThreadBus;
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
+//import com.squareup.leakcanary.LeakCanary;
+//import com.squareup.leakcanary.RefWatcher;
 import com.squareup.otto.Bus;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
@@ -22,7 +22,7 @@ public class MyApplication extends LitePalApplication {
     private static final String TAG = "MyApplication";
     private static MyApplication mApplication = null;
     private static Context mContext;
-    private static RefWatcher mRefWatcher;
+//    private static RefWatcher mRefWatcher;
     private static Bus mBus = new MainThreadBus();
 
     private ActivityLifecycleCallbacks mActivityLifecycleCallbacks = new ActivityLifecycleCallbacks() {
@@ -85,13 +85,13 @@ public class MyApplication extends LitePalApplication {
 
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks);
 
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
-        } else {
-            mRefWatcher = LeakCanary.install(this);
-
-        }
+//        if (LeakCanary.isInAnalyzerProcess(this)) {
+//            // This process is dedicated to LeakCanary for heap analysis.
+//            // You should not init your app in this process.
+//        } else {
+//            mRefWatcher = LeakCanary.install(this);
+//
+//        }
         ZXingLibrary.initDisplayOpinion(this);
         mContext = getApplicationContext();
     }
@@ -110,9 +110,9 @@ public class MyApplication extends LitePalApplication {
         return mContext;
     }
 
-    public static RefWatcher getRefWatcher() {
-        return mRefWatcher;
-    }
+//    public static RefWatcher getRefWatcher() {
+//        return mRefWatcher;
+//    }
 
     public static Bus getBus() {
         return mBus;
