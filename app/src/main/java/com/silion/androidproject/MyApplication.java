@@ -1,14 +1,13 @@
 package com.silion.androidproject;
 
 import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.silion.androidproject.otto.MainThreadBus;
-//import com.squareup.leakcanary.LeakCanary;
-//import com.squareup.leakcanary.RefWatcher;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 import com.squareup.otto.Bus;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
@@ -22,7 +21,7 @@ public class MyApplication extends LitePalApplication {
     private static final String TAG = "MyApplication";
     private static MyApplication mApplication = null;
     private static Context mContext;
-//    private static RefWatcher mRefWatcher;
+    private static RefWatcher mRefWatcher;
     private static Bus mBus = new MainThreadBus();
 
     private ActivityLifecycleCallbacks mActivityLifecycleCallbacks = new ActivityLifecycleCallbacks() {
@@ -85,15 +84,29 @@ public class MyApplication extends LitePalApplication {
 
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks);
 
-//        if (LeakCanary.isInAnalyzerProcess(this)) {
-//            // This process is dedicated to LeakCanary for heap analysis.
-//            // You should not init your app in this process.
-//        } else {
-//            mRefWatcher = LeakCanary.install(this);
-//
-//        }
+        initLeakCanary();
+
         ZXingLibrary.initDisplayOpinion(this);
         mContext = getApplicationContext();
+    }
+
+    /**
+     * 初始化内存泄漏检测工具LeakCanary
+     * 1. build.gradle
+     * dependencies {
+     *   debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+     *   releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+     * }
+     * 2.初始化
+     */
+    private void initLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+        } else {
+            mRefWatcher = LeakCanary.install(this);
+
+        }
     }
 
     @Override
@@ -110,9 +123,9 @@ public class MyApplication extends LitePalApplication {
         return mContext;
     }
 
-//    public static RefWatcher getRefWatcher() {
-//        return mRefWatcher;
-//    }
+    public static RefWatcher getRefWatcher() {
+        return mRefWatcher;
+    }
 
     public static Bus getBus() {
         return mBus;
