@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.silion.androidproject.otto.MainThreadBus;
+import com.silion.lsllibrary.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 import com.squareup.otto.Bus;
@@ -85,6 +86,10 @@ public class MyApplication extends LitePalApplication {
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks);
 
         initLeakCanary();
+
+        // 初始化Logger 日志打印
+        Logger.init();
+        Logger.d("hello");
 
         ZXingLibrary.initDisplayOpinion(this);
         mContext = getApplicationContext();
