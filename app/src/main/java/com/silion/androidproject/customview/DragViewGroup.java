@@ -1,6 +1,7 @@
 package com.silion.androidproject.customview;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import com.silion.lsllibrary.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,17 +55,49 @@ public class DragViewGroup extends FrameLayout {
         initView();
     }
 
+    /**
+     * 解析完xml最后一个tag调用？
+     */
     @Override
     protected void onFinishInflate() {
+        Logger.d(this, "onFinishInflate");
         super.onFinishInflate();
         for (int i = 0; i < getChildCount(); i++) {
             mChildViews.add(getChildAt(i));
         }
     }
 
+    /**
+     * 通常用来获取宽高？
+     * @param w
+     * @param h
+     * @param oldw
+     * @param oldh
+     */
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        Logger.d(this, "onSizeChanged");
         super.onSizeChanged(w, h, oldw, oldh);
+    }
+
+
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        Logger.d(this, "onMeasure");
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        Logger.d(this, "onLayout");
+        super.onLayout(changed, left, top, right, bottom);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        Logger.d(this, "onDraw");
+        super.onDraw(canvas);
     }
 
     @Override

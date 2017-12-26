@@ -10,6 +10,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.silion.lsllibrary.logger.Logger;
+
 /**
  * Created by silion on 2017/12/7.
  */
@@ -113,20 +115,32 @@ public class ViewDragHelperLayout extends FrameLayout {
     }
 
     @Override
+    protected void onFinishInflate() {
+        Logger.d(this, "onFinishInflate");
+        super.onFinishInflate();
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        Logger.d(this, "onSizeChanged");
+        super.onSizeChanged(w, h, oldw, oldh);
+    }
+
+    @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        Log.d(TAG, "onMeasure");
+        Logger.d(this, "onMeasure");
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        Log.d(TAG, "onLayout");
+        Logger.d(this, "onLayout");
         super.onLayout(changed, left, top, right, bottom);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        Log.d(TAG, "onDraw");
+        Logger.d(this, "onDraw");
         super.onDraw(canvas);
     }
 

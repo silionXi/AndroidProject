@@ -12,6 +12,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.silion.androidproject.R;
+import com.silion.lsllibrary.logger.Logger;
 
 /**
  * <Android开发进阶P36-45>继承View自定义一个ImageView, 过程如下
@@ -43,8 +44,31 @@ public class SimpleImageView extends View {
         mBitmapPaint.setAntiAlias(true);
     }
 
+    /**
+     * 解析完xml最后一个tag调用？
+     */
+    @Override
+    protected void onFinishInflate() {
+        Logger.d(this, "onFinishInflate");
+        super.onFinishInflate();
+    }
+
+    /**
+     * 通常用来获取宽高？
+     * @param w
+     * @param h
+     * @param oldw
+     * @param oldh
+     */
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        Logger.d(this, "onSizeChanged");
+        super.onSizeChanged(w, h, oldw, oldh);
+    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        Logger.d(this, "onMeasure");
         // 获取宽的模式与大小
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int width = MeasureSpec.getSize(widthMeasureSpec);
@@ -57,7 +81,14 @@ public class SimpleImageView extends View {
     }
 
     @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        Logger.d(this, "onLayout");
+        super.onLayout(changed, left, top, right, bottom);
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
+        Logger.d(this, "onDraw");
         super.onDraw(canvas);
         if (mDrawable == null) {
             return;

@@ -16,7 +16,7 @@ public class Logger {
     public static void init() {
         FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
                 .showThreadInfo(true)  // (Optional) Whether to show thread info or not. Default true
-                .methodCount(7)         // (Optional) How many method line to show. Default 2
+                .methodCount(20)         // (Optional) How many method line to show. Default 2
                 .methodOffset(3)        // (Optional) Hides internal method calls up to offset. Default 5
                 // .logStrategy(customLog) // (Optional) Changes the log strategy to print out. Default LogCat
                 .tag("silion")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
@@ -29,13 +29,17 @@ public class Logger {
         });
     }
 
+    public static void d(Object object, String msg) {
+        d(object.getClass().getSimpleName() + ": " + msg);
+    }
+
     public static void d(Object object) {
         com.orhanobut.logger.Logger.d(object);
-        com.orhanobut.logger.Logger.d("debug");
-        com.orhanobut.logger.Logger.e("error");
-        com.orhanobut.logger.Logger.w("warning");
-        com.orhanobut.logger.Logger.v("verbose");
-        com.orhanobut.logger.Logger.i("information");
-        com.orhanobut.logger.Logger.wtf("wtf!!!!");
+//        com.orhanobut.logger.Logger.d("debug");
+//        com.orhanobut.logger.Logger.e("error");
+//        com.orhanobut.logger.Logger.w("warning");
+//        com.orhanobut.logger.Logger.v("verbose");
+//        com.orhanobut.logger.Logger.i("information");
+//        com.orhanobut.logger.Logger.wtf("wtf!!!!");
     }
 }

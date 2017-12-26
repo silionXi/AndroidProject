@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.ImageView;
 
@@ -25,7 +26,7 @@ public class DragViewActivity extends Activity {
     @BindView(R.id.iv2)
     ImageView mIv2;
     @BindView(R.id.iv3)
-    ImageView mIv3;
+    SimpleImageView mIv3;
     private int mWidth;
     private int mHeight;
 
@@ -47,6 +48,19 @@ public class DragViewActivity extends Activity {
         Log.d(TAG, "onStart----------------start");
         super.onStart();
         Log.d(TAG, "onStart----------------end");
+        final View view = null;
+        /**
+         * 获取View的宽高
+         */
+        ViewTreeObserver observer = view.getViewTreeObserver();
+        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                int width = view.getMeasuredWidth();
+                int height = view.getMeasuredHeight();
+            }
+        });
     }
 
     @Override
